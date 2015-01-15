@@ -7,6 +7,7 @@ function chercherTag(){
 	flickrSearch(monTag);
 	colourSearch(monTag);
 	getGoogleFonts();
+	$("#choixUser").fadeIn('slow');
 }
 
 function flickrSearch(tag){
@@ -74,7 +75,7 @@ function getGoogleFonts(){
 	
 		$.each(data.items, function(i, fonts){
 			
-			$('#typos').append(fonts.family+"<br/>");
+			$('#typosSel').append("<option>"+fonts.family+"</option>");
 						
 		});
 	});
