@@ -6,6 +6,7 @@ function chercherTag(){
 	var monTag = $('#tag').val();
 	flickrSearch(monTag);
 	colourSearch(monTag);
+	motifsSearch(monTag);
 	getGoogleFonts();
 	$("#choixUser").fadeIn('slow');
 }
@@ -31,6 +32,33 @@ function flickrSearch(tag){
 						
 		});
 	});
+}
+
+function motifsSearch(tag){
+
+	$('#motifs').html('');
+	var jsonURL = 'http://www.colourlovers.com/api/patterns?keywords=';
+	var formatJSON = '&format=json&jsoncallback=OK';
+	
+	var OK = function(data){
+		alert(data);
+	}
+	
+	var adresseComplete = jsonURL + tag + formatJSON;
+	
+	$.getJSON(adresseComplete, function(data){
+	
+		$.each(data, function(i, motif){
+			
+			var paletteHTML = '<span>';
+			
+			paletteHTML += '<img src="' + motif.imageUrl + '"></span>';
+			
+			$('#motifs').append(paletteHTML);
+						
+		});
+	});
+
 }
 
 function colourSearch(tag){
