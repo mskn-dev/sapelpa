@@ -9,6 +9,7 @@ function chercherTag(){
 	motifsSearch(monTag);
 	getGoogleFonts();
 	$("#choixUser").fadeIn('slow');
+	$("#threeViz").fadeIn('slow');
 }
 
 function flickrSearch(tag){
