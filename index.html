@@ -166,7 +166,7 @@
 						  		<label>Typos : </label>
 						  	</div>
 						  	<div id="typos" class="m-top-md col-md-8">
-						  		<select class="form-control" id="typosSel"></select>
+						  		<select onchange="setOnModel(this);" class="form-control" id="typosSel"></select>
 						  	</div>
 						  	<div class="col-md-4">
 					  			<label>Images : </label>
@@ -190,8 +190,17 @@
 					  	</div>	
 				  	</div>
 				  	<div id="threeViz" class="displayNone col-md-6">
-				  		<canvas id="svgcanvas" width="300" height="300"></canvas>
-				  	</div>
+              <canvas id="svgcanvas" width="300" height="300"></canvas>
+            </div>
+            <div class="col-md-6" id="Demo">
+                <div id="buttons" class="col-md-12">
+                  <button id="demo" class="displayNone btn btn-md btn-success" type="button" value="Demonstration Vidéo" onclick="afficher_cacher();">Démo</button>
+                  <button id="impression" class="displayNone btn btn-md btn-success" type="button" onclick="imprimer()">Imprimer</button>
+                </div>
+              <div id="texte" class="texte displayNone">
+                  <iframe width="420" height="315" src="http://www.youtube.com/embed/6dJxwMXdv88" frameborder="0" allowfullscreen></iframe>
+              </div>
+            </div>
 	    			<!--<iframe class="col-md-12" src="http://localhost/three.js/Atelier3D/atelier3D.html"></iframe>-->
 	    		</div>
 	    	</div>
@@ -200,3 +209,4 @@
     	<script type="text/javascript" src="./js/modele3D.js"></script>
     </body>
 </html>
+

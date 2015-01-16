@@ -12,3 +12,7 @@ width: 34px;
 }
 
 .displayNone{display:none;}
+
+#buttons{
+	margin-bottom: 10px;
+}

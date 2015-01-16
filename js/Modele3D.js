@@ -1,3 +1,6 @@
+var svgObject = document.getElementById ('svg2');
+var modelAndMaterials;
+
 $(function(){
 
 var viewerSettings = {
@@ -14,11 +17,28 @@ if (!viewer.Start (document.getElementById ('svgcanvas'), viewerSettings)) {
 	return;
 }
 
-var svgObject = document.getElementById ('svg2');
-var modelAndMaterials = JSM.SvgToModel (svgObject, 8, 5);
+	modelAndMaterials = JSM.SvgToModel (svgObject, 8, 5);
+
 var model = modelAndMaterials[0];
 var materials = modelAndMaterials[1];
 
+
+initMaterials(model,materials);
+
+
+var meshes = JSM.ConvertModelToThreeMeshes (model, materials);
+viewer.AddMeshes (meshes);
+
+viewer.FitInWindow ();
+viewer.Draw ();
+
+});
+
+function setOnModel(div){
+
+}
+
+function initMaterials(model,materials){
 
 materials.AddMaterial (new JSM.Material ({ambient : 0xfefefe, diffuse : 0xfefefe})); /// INDEX 7
 materials.AddMaterial (new JSM.Material ({ambient : 0xcc0000, diffuse : 0xcc0000}));
@@ -40,12 +60,4 @@ model.bodies.forEach(function(bodie) {
     })
 });
 
-
-
-var meshes = JSM.ConvertModelToThreeMeshes (model, materials);
-viewer.AddMeshes (meshes);
-
-viewer.FitInWindow ();
-viewer.Draw ();
-
-});
+}

@@ -1,4 +1,8 @@
 $(function(){
+
+	  // if (window.print) {
+   //              document.write('<form><input data-href=".img/octa-chaine6-a.png" type=button name=Imprimer value="Imprimer" onClick="window.print()"></form>');
+   //          }
 	
 })
 
@@ -10,6 +14,8 @@ function chercherTag(){
 	getGoogleFonts();
 	$("#choixUser").fadeIn('slow');
 	$("#threeViz").fadeIn('slow');
+	$("#demo").fadeIn('slow');
+	$("#impression").fadeIn('slow');
 }
 
 function flickrSearch(tag){
@@ -24,13 +30,15 @@ function flickrSearch(tag){
 	$.getJSON(adresseComplete, function(data){
 	
 		$.each(data.items, function(i, photo){
-			
-			var photoHTML = '<span>';
-			
-			photoHTML += '<img src="' + photo.media.m.replace('_m', '_s') + '"></span>';
-			
-			$('#flickr').append(photoHTML);
-						
+			if(i<6){
+				var photoHTML = '<span>';
+				
+				photoHTML += '<img onclick="setOnModel(this);" src="' + photo.media.m.replace('_m', '_s') + '"></span>';
+				
+				$('#flickr').append(photoHTML);
+			}
+			else
+				return false;
 		});
 	});
 }
@@ -50,13 +58,15 @@ function motifsSearch(tag){
 	$.getJSON(adresseComplete, function(data){
 	
 		$.each(data, function(i, motif){
-			
-			var paletteHTML = '<span>';
-			
-			paletteHTML += '<img src="' + motif.imageUrl + '"></span>';
-			
-			$('#motifs').append(paletteHTML);
-						
+			if(i<6){
+				var paletteHTML = '<span>';
+				
+				paletteHTML += '<img onclick="setOnModel(this);" src="' + motif.imageUrl + '"></span>';
+				
+				$('#motifs').append(paletteHTML);
+			}
+			else
+				return false;
 		});
 	});
 
@@ -77,13 +87,15 @@ function colourSearch(tag){
 	$.getJSON(adresseComplete, function(data){
 	
 		$.each(data, function(i, palette){
-			
+			if(i<6){
 			var paletteHTML = '<span>';
 			
-			paletteHTML += '<img src="' + palette.imageUrl + '"></span>';
+			paletteHTML += '<img onclick="setOnModel(this);" src="' + palette.imageUrl + '"></span>';
 			
 			$('#palettes').append(paletteHTML);
-						
+			}
+			else
+				return false;			
 		});
 	});
 
@@ -109,3 +121,18 @@ function getGoogleFonts(){
 		});
 	});
 }
+
+function afficher_cacher()
+{
+	$("#texte").toggle();
+}
+
+function imprimer(){
+
+	if (window.print) {
+        document.write("<form><button onClick='window.print()'>Imprimer</button><br/><img src='octa-chain6-a.png'></form>");
+    }
+
+}
+
+
